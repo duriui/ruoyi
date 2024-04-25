@@ -486,6 +486,7 @@
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="submitForm1">确 定</el-button>
         <el-button @click="cancel1">取 消</el-button>
+
       </div>
     </el-dialog>
 
