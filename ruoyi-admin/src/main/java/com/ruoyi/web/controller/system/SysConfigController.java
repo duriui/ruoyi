@@ -22,7 +22,7 @@ import com.ruoyi.system.service.ISysConfigService;
 
 /**
  * 参数配置 信息操作处理
- * 
+ *
  * @author ruoyi
  */
 @RestController
@@ -128,14 +128,14 @@ public class SysConfigController extends BaseController
         SysConfig config = configService.selectConfigById(sysDataDetails.getConfig_id());
         config.setUpdateBy(getUsername());
 
-        List<SysDataDetails> sysDataDetails1 = JSON.parseArray(config.getSysDataDetails(), SysDataDetails.class);
-        if(sysDataDetails1 == null || sysDataDetails1.size() == 0){
-            ArrayList<SysDataDetails> sysDataDetailsArrayList = new ArrayList<SysDataDetails>();
-            sysDataDetailsArrayList.add(sysDataDetails);
-            config.setSysDataDetails(JSON.toJSONString(sysDataDetailsArrayList));
+        List<SysDataDetails> sysDataDetailsOld = JSON.parseArray(config.getSysDataDetails(), SysDataDetails.class);
+        if(sysDataDetailsOld == null || sysDataDetailsOld.size() == 0){
+            ArrayList<SysDataDetails> sysDataDetailsNew = new ArrayList<SysDataDetails>();
+            sysDataDetailsNew.add(sysDataDetails);
+            config.setSysDataDetails(JSON.toJSONString(sysDataDetailsNew));
         }else{
-            sysDataDetails1.add(sysDataDetails);
-            config.setSysDataDetails(JSON.toJSONString(sysDataDetails1.add(sysDataDetails)));
+            sysDataDetailsOld.add(sysDataDetails);
+            config.setSysDataDetails(JSON.toJSONString(sysDataDetailsOld));
         }
         return toAjax(configService.updateConfig(config));
     }
