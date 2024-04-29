@@ -484,8 +484,8 @@
 
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm1">确 定</el-button>
-        <el-button @click="cancel1">取 消</el-button>
+        <el-button type="primary" @click="submitForm">确 定</el-button>
+        <el-button @click="cancel">取 消</el-button>
 
       </div>
     </el-dialog>
@@ -861,11 +861,11 @@
             style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
           />
         </el-form-item>
-
       </el-form>
+
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
+        <el-button type="primary" @click="submitForm2">确 定</el-button>
+        <el-button @click="cancel2">取 消</el-button>
       </div>
     </el-dialog>
   </div>
@@ -1034,21 +1034,21 @@ export default {
       this.resetForm("queryForm");
       this.handleQuery();
     },
-    /** 新增按钮操作 */
+    /** 新增一种数据按钮操作 */
     handleAdd() {
       this.reset();
       this.open2 = true;
-      this.title = "添加参数";
+      this.title = "新增一种数据";
     },
 
-    /** 新增数据操作 */
+    /** 新增一条数据按钮操作 */
     handleAddData(row) {
       this.reset();
       const configId = row.configId || this.ids
       getConfigName(configId).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "增加数据";
+        this.title = "新增一条数据";
       });
     },
     // 多选框选中数据
@@ -1101,15 +1101,17 @@ export default {
     },
 
     /** 新增一种数据提交按钮 */
-    submitForm2: function() {
+    submitForm2: function () {
       this.$refs["form"].validate(valid => {
         if (valid) {
-          addConfig(this.form).then(response => {
+          if (this.form.configId == undefined) {
+            addData(this.form).then(response => {
               this.$modal.msgSuccess("新增成功");
               this.open2 = false;
               this.getList();
             });
           }
+        }
       });
     },
 

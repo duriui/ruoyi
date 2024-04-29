@@ -33,12 +33,7 @@ export function getConfigName(configId) {
   })
 }
 
-export function addData(configId) {
-  return request({
-    url: '/system/config/add/' + configId,
-    method: 'post'
-  })
-}
+
 
 // 根据参数键名查询参数值
 export function getConfigKey(configKey) {
@@ -48,16 +43,16 @@ export function getConfigKey(configKey) {
   })
 }
 
-// 新增参数配置
-export function addConfig(data) {
+// 新增一种数据
+export function addData(data) {
   return request({
-    url: '/system/config',
+    url: '/system/config/add',
     method: 'post',
     data: data
   })
 }
 
-// 新增参数配置
+// 新增一条数据
 export function addOneData(data) {
   return request({
     url: '/system/config/addOne',
