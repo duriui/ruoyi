@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.ruoyi.system.domain.SysData;
 import com.ruoyi.system.domain.SysDataDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -141,19 +142,17 @@ public class SysConfigController extends BaseController
     }
 
     /**
-     * 新增数据的一条记录
+     * 新增一种数据
      */
     @PreAuthorize("@ss.hasPermi('system:config:add')")
     @Log(title = "参数管理", businessType = BusinessType.INSERT)
     @PostMapping("add")
-    public AjaxResult addData(@Validated @RequestBody SysConfig config)
+    public AjaxResult addData(@Validated @RequestBody SysData sysData)
     {
-        if (!configService.checkConfigKeyUnique(config))
-        {
-            return error("新增参数'" + config.getConfigName() + "'失败，参数键名已存在");
-        }
-        config.setUpdateBy(getUsername());
-        return toAjax(configService.insertConfig(config));
+        SysConfig sysConfig = new SysConfig();
+        sysConfig.setUpdateBy(getUsername());
+        sysConfig.setConfigName(sysData.getConfigName());
+        return toAjax(configService.insertConfig(sysConfig));
     }
 
     /**
