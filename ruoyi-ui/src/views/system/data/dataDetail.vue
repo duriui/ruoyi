@@ -43,33 +43,95 @@ import { getConfig, delConfig, addConfig, updateConfig, refreshCache,getDataDeta
 export default {
   data() {
     return {
+      detailData: null, // 存储接收到的数据
       listLoading: false,
       showList: [],
       // 这里为了简便我就没有调用后台接口获取数据，直接写的假数据  你要用的话可以调用后台接口获取tableColumnList，注意数据格式
-      tableColumnList: [{prop: 'id', propName: '编号'},
-        {prop: 'name', propName: '名字'},
-        {prop: 'age', propName: '保质期'},
-        {prop: 'remark', propName: '特点'}],
+      tableColumnList: [],
       // 这里为了简便我就没有调用后台接口获取数据，直接写的假数据
-      dataList: [{'id': '100001','name': '小红萝卜','age': '2年','remark': '适合油炸','country': '中国','address': '广东省深圳市'},
-        {'id': '100002','name': '萝卜妹','age': '2年','remark': '适合水煮','country': '美国','address': '硅谷'},
-        {'id': '100003','name': '胖萝卜头','age': '1年','remark': '适合玩儿','country': '泰国','address': '清迈'},
-        {'id': '100004','name': '萝卜酱','age': '4年','remark': '适合吃火锅','country': '韩国','address': '首尔'}],
+      dataList: [],
       optionalColumnList: [{prop: 'country', propName: '出口国家'},
         {prop: 'address', propName: '零售点'}],
       checkArr:[]
     }
   },
   created() {
-    this.queryFn()
+    const rawDetailData = this.$route.params.data; // 获取路由传递过来的参数
+    console.log('rawDetailData:', rawDetailData);
+    // 对数据进行处理
+    this.tableColumnList = this.generateTableColumnList(this.transformDataForColumn(rawDetailData));
+    this.dataList = this.generateTableDataList(this.transformDataForData(rawDetailData));
+    console.log('tableColumnList:', this.tableColumnList);
+    console.log('dataList:', this.dataList);
   },
   methods: {
+    transformDataForColumn(data) {
+      return data.map(item => {
+        const filteredItem = {};
+        // 遍历对象的每个键，检查是否以 'colum' 开头
+        Object.keys(item).forEach(key => {
+          if (key.startsWith('colum') && item[key] !== null) {
+            filteredItem[key] = item[key];
+          }
+        });
+        return filteredItem;
+      });
+    },
+    generateTableColumnList(filteredData) {
+      if (filteredData.length > 0) {
+        // 假设所有对象具有相同的键集合，所以我们只查看第一个对象
+        const keyValuePairs = Object.entries(filteredData[0]);
+        return keyValuePairs.map(([key, value]) => ({
+          prop: key,
+          propName: value.toString() // 将值转换为字符串
+        }));
+      }
+      return [];
+    },
+    transformDataForData(data) {
+      return data.map(item => {
+        const filteredItem = {};
+        // 遍历对象的每个键，检查是否以 'data' 开头
+        Object.keys(item).forEach(key => {
+          if (key.startsWith('data') && item[key] !== null) {
+            filteredItem[key] = item[key];
+          }
+        });
+        return filteredItem;
+      });
+    },
+    generateTableDataList(filteredData) {
+      if (filteredData.length > 0) {
+        // 假设所有对象具有相同的键集合，所以我们只查看第一个对象
+        const keyValuePairs = Object.entries(filteredData[0]);
+        return keyValuePairs.map(([key, value]) => ({
+          prop: key,
+          propName: value.toString() // 将值转换为字符串
+        }));
+      }
+      return [];
+    },
+    handleUpdate() {
+      // 调用后台接口修改数据的方法写在这里
+      updateConfig(this.detailData).then(response => {
+        this.$message.success('修改成功')
+        this.$router.push({ path: '/system/config/data' })
+      })
+    },
+    handleDelete() {
+      // 调用后台接口删除数据的方法写在这里
+      delConfig(this.detailData).then(response => {
+        this.$message.success('删除成功')
+        this.$router.push({ path: '/system/config/data' })
+      })
+    },
+
     queryFn() {
       // 调用后台接口获取tableColumnList和dataList的方法写在这里
-      // getData().then(response =>{
-      //   this.tableColumnList = response.data.tableColumnList
-      //   this.dataList = response.data.dataList
-      // })
+      getData().then(response =>{
+        this.tableColumnList = response.data.tableColumnList
+        this.dataList = response.data.dataList
+      })
       this.showList = this.dataList
     },
     clearQuery() {

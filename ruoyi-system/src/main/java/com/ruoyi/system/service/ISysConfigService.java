@@ -2,7 +2,8 @@ package com.ruoyi.system.service;
 
 import java.util.List;
 import com.ruoyi.system.domain.SysConfig;
-import com.ruoyi.system.domain.vo.SysDataDetailVo;
+import com.ruoyi.system.domain.SysDataDemo;
+import com.ruoyi.system.domain.SysDataDetails;
 
 /**
  * 参数配置 服务层
@@ -94,7 +95,9 @@ public interface ISysConfigService
      * @param configId 参数信息
      * @return 结果
      */
-    SysDataDetailVo selectDataDetailById(Long configId);
+    List<SysDataDetails> selectDataDetailById(Long configId);
 
     int insertData(SysConfig config);
+
+    int insertSysData(SysDataDemo sysData);
 }
