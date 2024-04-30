@@ -885,6 +885,7 @@ INSERT INTO `sys_menu` VALUES (101, '角色管理', 1, 2, 'role', 'system/role/i
 INSERT INTO `sys_menu` VALUES (103, '部门管理', 1, 4, 'dept', 'system/dept/index', '', 1, 0, 'C', '0', '0', 'system:dept:list', 'tree', 'admin', '2024-03-05 14:49:42', '', NULL, '部门管理菜单');
 INSERT INTO `sys_menu` VALUES (104, '岗位管理', 1, 5, 'post', 'system/post/index', '', 1, 0, 'C', '0', '0', 'system:post:list', 'post', 'admin', '2024-03-05 14:49:42', '', NULL, '岗位管理菜单');
 INSERT INTO `sys_menu` VALUES (106, '数据管理', 1, 7, 'data', 'system/data/index', '', 1, 0, 'C', '0', '0', 'system:data:list', 'edit', 'admin', '2024-03-18 15:00:59', '', NULL, '参数设置菜单');
+INSERT INTO `sys_menu` VALUES (107, '数据详情', 1, 7, 'data', 'system/data/dataDetail', '', 1, 0, 'C', '0', '0', 'system:data:list', 'edit', 'admin', '2024-03-18 15:00:59', '', NULL, '参数详情菜单');
 INSERT INTO `sys_menu` VALUES (109, '在线用户', 2, 1, 'online', 'monitor/online/index', '', 1, 0, 'C', '0', '0', 'monitor:online:list', 'online', 'admin', '2024-03-05 14:49:42', '', NULL, '在线用户菜单');
 INSERT INTO `sys_menu` VALUES (500, '操作日志', 108, 1, 'operlog', 'monitor/operlog/index', '', 1, 0, 'C', '0', '0', 'monitor:operlog:list', 'form', 'admin', '2024-03-05 14:49:42', '', NULL, '操作日志菜单');
 INSERT INTO `sys_menu` VALUES (501, '登录日志', 108, 2, 'logininfor', 'monitor/logininfor/index', '', 1, 0, 'C', '0', '0', 'monitor:logininfor:list', 'logininfor', 'admin', '2024-03-05 14:49:42', '', NULL, '登录日志菜单');

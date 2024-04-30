@@ -1,12 +1,12 @@
 package com.ruoyi.web.controller.system;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.ruoyi.system.domain.SysData;
+import com.ruoyi.system.domain.SysDataDemo;
 import com.ruoyi.system.domain.SysDataDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,6 +20,12 @@ import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.system.domain.SysConfig;
 import com.ruoyi.system.service.ISysConfigService;
+
+//TODO: 1、新增一种数据模板，需要输入数据名称、所需要的列名
+//TODO: 2、修改一种数据模板，需要输入数据名称、列名
+//TODO: 3、新增一条数据，根据列名弹出一个输入界面，输入数据，保存数据
+//TODO: 4、修改一条数据，根据列名弹出一个输入界面，输入数据，保存数据
+//TODO: 5、删除一条数据，根据列名弹出一个确认界面，确认是否删除，确认后删除数据
 
 /**
  * 参数配置 信息操作处理
@@ -147,12 +153,32 @@ public class SysConfigController extends BaseController
     @PreAuthorize("@ss.hasPermi('system:config:add')")
     @Log(title = "参数管理", businessType = BusinessType.INSERT)
     @PostMapping("add")
-    public AjaxResult addData(@Validated @RequestBody SysData sysData)
+    public AjaxResult addData(@Validated @RequestBody SysDataDemo sysData)
     {
         SysConfig sysConfig = new SysConfig();
         sysConfig.setUpdateBy(getUsername());
-        sysConfig.setConfigName(sysData.getConfigName());
+        sysConfig.setCreateBy(getUsername());
+
+        sysConfig.setConfigName(sysData.getDataName());
         return toAjax(configService.insertConfig(sysConfig));
+    }
+
+    /**
+     * 新增一种数据模板
+     */
+    @PreAuthorize("@ss.hasPermi('system:config:add')")
+    @Log(title = "参数管理", businessType = BusinessType.INSERT)
+    @PostMapping("addDataDemo")
+    public AjaxResult addDataDemo(@Validated @RequestBody SysDataDemo sysData)
+    {
+        if(null == sysData.getDataName() || "".equals(sysData.getDataName())){
+            return AjaxResult.error("数据名称不能为空");
+        }
+        sysData.setCreateBy(getUsername());
+        sysData.setUpdateBy(getUsername());
+        sysData.setCreateTime(LocalDateTime.now().toString());
+        sysData.setUpdateTime(LocalDateTime.now().toString());
+        return toAjax(configService.insertSysData(sysData));
     }
 
     /**
