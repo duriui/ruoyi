@@ -29,28 +29,7 @@ public class SysDataDetails  {
     private Long id;
 
     /** 参数ID */
-    private Long config_id;
-
-    private String colum1;
-    private String colum2;
-    private String colum3;
-    private String colum4;
-    private String colum5;
-    private String colum6;
-    private String colum7;
-    private String colum8;
-    private String colum9;
-    private String colum10;
-    private String colum11;
-    private String colum12;
-    private String colum13;
-    private String colum14;
-    private String colum15;
-    private String colum16;
-    private String colum17;
-    private String colum18;
-    private String colum19;
-    private String colum20;
+    private Long configId;
 
     @Excel(name = "数据列")
     private String data1;

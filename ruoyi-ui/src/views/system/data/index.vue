@@ -141,348 +141,171 @@
 
     <!-- 添加或修改新增一条数据配置对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="列名" prop="colum1">
-          <el-input
-            v-model="form.colum1"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
+      <el-form ref="form" :model="form" :rules="rules" label-width="120px">
+        <el-form-item v-for="(value, columnName) in columns" :key="columnName" :label="value">
+          <template v-if="columnName.includes('1')">
+            <el-input
+              v-model="form.data1"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('2')">
+            <el-input
+              v-model="form.data2"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('3')">
+            <el-input
+              v-model="form.data3"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('4')">
+            <el-input
+              v-model="form.data4"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('5')">
+            <el-input
+              v-model="form.data5"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('6')">
+            <el-input
+              v-model="form.data6"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('7')">
+            <el-input
+              v-model="form.data7"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('8')">
+            <el-input
+              v-model="form.data8"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('9')">
+            <el-input
+              v-model="form.data9"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('10')">
+            <el-input
+              v-model="form.data10"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('11')">
+            <el-input
+              v-model="form.data11"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('12')">
+            <el-input
+              v-model="form.data12"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('13')">
+            <el-input
+              v-model="form.data13"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('14')">
+            <el-input
+              v-model="form.data14"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('15')">
+            <el-input
+              v-model="form.data15"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('16')">
+            <el-input
+              v-model="form.data16"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('17')">
+            <el-input
+              v-model="form.data17"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('18')">
+            <el-input
+              v-model="form.data18"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('19')">
+            <el-input
+              v-model="form.data19"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
+          <template v-if="columnName.includes('20')">
+            <el-input
+              v-model="form.data20"
+              type="textarea"
+              placeholder="请输入内容"
+              style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+            />
+          </template>
         </el-form-item>
-        <el-form-item label="数据1" prop="data1">
-          <el-input
-            v-model="form.data1"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum2">
-          <el-input
-            v-model="form.colum2"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据2" prop="data2">
-          <el-input
-            v-model="form.data2"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum3">
-          <el-input
-            v-model="form.colum3"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据3" prop="data3">
-          <el-input
-            v-model="form.data3"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum4">
-          <el-input
-            v-model="form.colum4"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据4" prop="data4">
-          <el-input
-            v-model="form.data4"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum5">
-          <el-input
-            v-model="form.colum5"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据5" prop="data5">
-          <el-input
-            v-model="form.data5"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum6">
-          <el-input
-            v-model="form.colum6"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据6" prop="data6">
-          <el-input
-            v-model="form.data6"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum7">
-          <el-input
-            v-model="form.colum7"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据7" prop="data7">
-          <el-input
-            v-model="form.data7"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum8">
-          <el-input
-            v-model="form.colum8"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据8" prop="data8">
-          <el-input
-            v-model="form.data8"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum9">
-          <el-input
-            v-model="form.colum9"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据9" prop="data9">
-          <el-input
-            v-model="form.data9"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum10">
-          <el-input
-            v-model="form.colum10"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据10" prop="data10">
-          <el-input
-            v-model="form.data10"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum11">
-          <el-input
-            v-model="form.colum11"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据11" prop="data11">
-          <el-input
-            v-model="form.data11"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum12">
-          <el-input
-            v-model="form.colum12"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据12" prop="data12">
-          <el-input
-            v-model="form.data12"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum13">
-          <el-input
-            v-model="form.colum13"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据13" prop="data13">
-          <el-input
-            v-model="form.data13"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum14">
-          <el-input
-            v-model="form.colum14"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据14" prop="data14">
-          <el-input
-            v-model="form.data14"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum15">
-          <el-input
-            v-model="form.colum15"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据15" prop="data15">
-          <el-input
-            v-model="form.data15"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum16">
-          <el-input
-            v-model="form.colum16"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据16" prop="data16">
-          <el-input
-            v-model="form.data16"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum17">
-          <el-input
-            v-model="form.colum17"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据17" prop="data17">
-          <el-input
-            v-model="form.data17"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum18">
-          <el-input
-            v-model="form.colum18"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据18" prop="data18">
-          <el-input
-            v-model="form.data18"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum19">
-          <el-input
-            v-model="form.colum19"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据19" prop="data19">
-          <el-input
-            v-model="form.data19"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
-        <el-form-item label="列名" prop="colum20">
-          <el-input
-            v-model="form.colum20"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-        <el-form-item label="数据20" prop="data20">
-          <el-input
-            v-model="form.data20"
-            type="textarea"
-            placeholder="请输入内容"
-            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-          />
-        </el-form-item>
-
       </el-form>
+
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="submitForm">确 定</el-button>
         <el-button @click="cancel">取 消</el-button>
@@ -521,6 +344,186 @@
             style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
           />
         </el-form-item>
+
+        <el-form-item label="列名" prop="column1">
+          <el-input
+            v-model="form.column1"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column2">
+          <el-input
+            v-model="form.column2"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column3">
+          <el-input
+            v-model="form.column3"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column4">
+          <el-input
+            v-model="form.column4"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column5">
+          <el-input
+            v-model="form.column5"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column6">
+          <el-input
+            v-model="form.column6"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column7">
+          <el-input
+            v-model="form.column7"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column8">
+          <el-input
+            v-model="form.column8"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column9">
+          <el-input
+            v-model="form.column9"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column10">
+          <el-input
+            v-model="form.column10"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column11">
+          <el-input
+            v-model="form.column11"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column12">
+          <el-input
+            v-model="form.column12"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column13">
+          <el-input
+            v-model="form.column13"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column14">
+          <el-input
+            v-model="form.column14"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column15">
+          <el-input
+            v-model="form.column15"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column16">
+          <el-input
+            v-model="form.column16"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column17">
+          <el-input
+            v-model="form.column17"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column18">
+          <el-input
+            v-model="form.column18"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column19">
+          <el-input
+            v-model="form.column19"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column20">
+          <el-input
+            v-model="form.column20"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
       </el-form>
 
       <div slot="footer" class="dialog-footer">
@@ -531,7 +534,13 @@
   </div>
 </template>
 
-
+<style scoped>
+.el-form-item__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+</style>
 
 <script>
 import {
@@ -542,7 +551,7 @@ import {
   updateConfig,
   refreshCache,
   getDataDetail,
-  addData, getConfigName, addOneData
+  addData, getConfigName, addOneData, getColumns, getData
 } from "@/api/system/config";
 
 export default {
@@ -551,6 +560,8 @@ export default {
   data() {
     return {
 
+      // 列名
+      columns: [], // 初始化为空，后端返回后填充
       // 遮罩层
       loading: true,
       // 选中数组
@@ -604,26 +615,26 @@ export default {
         data18: '',
         data19: '',
         data20: '',
-        colum1: '',
-        colum2: '',
-        colum3: '',
-        colum4: '',
-        colum5: '',
-        colum6: '',
-        colum7: '',
-        colum8: '',
-        colum9: '',
-        colum10: '',
-        colum11: '',
-        colum12: '',
-        colum13: '',
-        colum14: '',
-        colum15: '',
-        colum16: '',
-        colum17: '',
-        colum18: '',
-        colum19: '',
-        colum20: ''
+        column1: '',
+        column2: '',
+        column3: '',
+        column4: '',
+        column5: '',
+        column6: '',
+        column7: '',
+        column8: '',
+        column9: '',
+        column10: '',
+        column11: '',
+        column12: '',
+        column13: '',
+        column14: '',
+        column15: '',
+        column16: '',
+        column17: '',
+        column18: '',
+        column19: '',
+        column20: ''
       },
       // 表单校验
       rules: {
@@ -633,9 +644,11 @@ export default {
       }
     };
   },
-  created() {
+  async created() {
     this.getList();
   },
+
+
 
   methods: {
     /** 查询参数列表 */
@@ -699,6 +712,10 @@ export default {
     handleAddData(row) {
       this.reset();
       const configId = row.configId || this.ids
+      getColumns(configId).then(response => {
+        this.columns = response.data;
+        console.log(this.columns)
+      });
       getConfigName(configId).then(response => {
         this.form = response.data;
         this.open = true;
@@ -715,13 +732,11 @@ export default {
     handleQueryDetail(row) {
       this.reset();
       const configId = row.configId || this.ids
-      getDataDetail(configId).then(response => {
-        // 使用路由传递数据到另一个页面
-        this.$router.push({
-          name:'dataDetail',
-          params:{data: response.data}
-        })
-      });
+      // 使用路由传递数据到另一个页面
+      this.$router.push({
+        name:'dataDetail',
+        params:{data: configId}
+      })
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
@@ -773,9 +788,9 @@ export default {
     submitForm: function() {
       this.$refs["form"].validate(valid => {
         if (valid) {
-          if (this.form.configId != undefined) {
-            updateConfig(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
+          if (!this.form.configId != undefined) {
+            addOneData(this.form).then(response => {
+              this.$modal.msgSuccess("新增成功");
               this.open = false;
               this.getList();
             });

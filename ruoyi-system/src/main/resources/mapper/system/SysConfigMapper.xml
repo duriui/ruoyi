@@ -14,6 +14,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="createTime"    column="create_time"    />
         <result property="updateBy"      column="update_by"      />
         <result property="updateTime"    column="update_time"    />
+        <result property="column1"    column="column1"    />
+        <result property="column2"    column="column2"    />
+        <result property="column3"    column="column3"    />
+        <result property="column4"    column="column4"    />
+        <result property="column5"    column="column5"    />
+        <result property="column6"    column="column6"    />
+        <result property="column7"    column="column7"    />
+        <result property="column8"    column="column8"    />
+        <result property="column9"    column="column9"    />
+        <result property="column10"    column="column10"    />
+        <result property="column11"    column="column11"    />
+        <result property="column12"    column="column12"    />
+        <result property="column13"    column="column13"    />
+        <result property="column14"    column="column14"    />
+        <result property="column15"    column="column15"    />
+        <result property="column16"    column="column16"    />
+        <result property="column17"    column="column17"    />
+        <result property="column18"    column="column18"    />
+        <result property="column19"    column="column19"    />
+        <result property="column20"    column="column20"    />
+        <result property="remark"    column="remark"    />
         <result property="sysDataDetails" column="sysDataDetails" />
     </resultMap>
     
@@ -45,9 +66,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="configName != null and configName != ''">
 				AND config_name like concat('%', #{configName}, '%')
 			</if>
-			<if test="configType != null and configType != ''">
-				AND config_type = #{configType}
-			</if>
+<!--			<if test="configType != null and configType != ''">-->
+<!--				AND config_type = #{configType}-->
+<!--			</if>-->
 			<if test="configKey != null and configKey != ''">
 				AND config_key like concat('%', #{configKey}, '%')
 			</if>
@@ -72,25 +93,67 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <insert id="insertConfig" parameterType="SysConfig">
         insert into sys_config (
-			<if test="configName != null and configName != '' ">config_name,</if>
-			<if test="configKey != null and configKey != '' ">config_key,</if>
-			<if test="configValue != null and configValue != '' ">config_value,</if>
-			<if test="configType != null and configType != '' ">config_type,</if>
-			<if test="createBy != null and createBy != ''">create_by,</if>
-			<if test="remark != null and remark != ''">remark,</if>
-            <if test="sysDataDetails != null and sysDataDetails != ''">sysDataDetails,</if>
+        <if test="configName != null and configName != '' ">config_name,</if>
+        <if test="configKey != null and configKey != '' ">config_key,</if>
+        <if test="configValue != null and configValue != '' ">config_value,</if>
+        <if test="configType != null and configType != '' ">config_type,</if>
+        <if test="createBy != null and createBy != ''">create_by,</if>
+        <if test="remark != null and remark != ''">remark,</if>
+        <if test="column1 != null and column1 != ''">column1,</if>
+        <if test="column2 != null and column2 != ''">column2,</if>
+        <if test="column3 != null and column3 != ''">column3,</if>
+        <if test="column4 != null and column4 != ''">column4,</if>
+        <if test="column5 != null and column5 != ''">column5,</if>
+        <if test="column6 != null and column6 != ''">column6,</if>
+        <if test="column7 != null and column7 != ''">column7,</if>
+        <if test="column8 != null and column8 != ''">column8,</if>
+        <if test="column9 != null and column9 != ''">column9,</if>
+        <if test="column10 != null and column10 != ''">column10,</if>
+        <if test="column11 != null and column11 != ''">column11,</if>
+        <if test="column12 != null and column12 != ''">column12,</if>
+        <if test="column13 != null and column13 != ''">column13,</if>
+        <if test="column14 != null and column14 != ''">column14,</if>
+        <if test="column15 != null and column15 != ''">column15,</if>
+        <if test="column16 != null and column16 != ''">column16,</if>
+        <if test="column17 != null and column17 != ''">column17,</if>
+        <if test="column18 != null and column18 != ''">column18,</if>
+        <if test="column19 != null and column19 != ''">column19,</if>
+        <if test="column20 != null and column20 != ''">column20,</if>
+        <if test="updateBy != null and updateBy != ''">update_by,</if>
+        <if test="sysDataDetails != null and sysDataDetails != ''">sysDataDetails,</if>
  			create_time,
  			update_time
         )values(
-			<if test="configName != null and configName != ''">#{configName},</if>
-			<if test="configKey != null and configKey != ''">#{configKey},</if>
-			<if test="configValue != null and configValue != ''">#{configValue},</if>
-			<if test="configType != null and configType != ''">#{configType},</if>
-			<if test="createBy != null and createBy != ''">#{createBy},</if>
-			<if test="remark != null and remark != ''">#{remark},</if>
-            <if test="sysDataDetails != null and sysDataDetails != ''">#{sysDataDetails},</if>
- 			sysdate(),
-             sysdate()
+        <if test="configName != null and configName != ''">#{configName},</if>
+        <if test="configKey != null and configKey != ''">#{configKey},</if>
+        <if test="configValue != null and configValue != ''">#{configValue},</if>
+        <if test="configType != null and configType != ''">#{configType},</if>
+        <if test="createBy != null and createBy != ''">#{createBy},</if>
+        <if test="remark != null and remark != ''">#{remark},</if>
+        <if test="column1 != null and column1 != ''">#{column1},</if>
+        <if test="column2 != null and column2 != ''">#{column2},</if>
+        <if test="column3 != null and column3 != ''">#{column3},</if>
+        <if test="column4 != null and column4 != ''">#{column4},</if>
+        <if test="column5 != null and column5 != ''">#{column5},</if>
+        <if test="column6 != null and column6 != ''">#{column6},</if>
+        <if test="column7 != null and column7 != ''">#{column7},</if>
+        <if test="column8 != null and column8 != ''">#{column8},</if>
+        <if test="column9 != null and column9 != ''">#{column9},</if>
+        <if test="column10 != null and column10 != ''">#{column10},</if>
+        <if test="column11 != null and column11 != ''">#{column11},</if>
+        <if test="column12 != null and column12 != ''">#{column12},</if>
+        <if test="column13 != null and column13 != ''">#{column13},</if>
+        <if test="column14 != null and column14 != ''">#{column14},</if>
+        <if test="column15 != null and column15 != ''">#{column15},</if>
+        <if test="column16 != null and column16 != ''">#{column16},</if>
+        <if test="column17 != null and column17 != ''">#{column17},</if>
+        <if test="column18 != null and column18 != ''">#{column18},</if>
+        <if test="column19 != null and column19 != ''">#{column19},</if>
+        <if test="column20 != null and column20 != ''">#{column20},</if>
+        <if test="updateBy != null and updateBy != ''">#{updateBy},</if>
+        <if test="sysDataDetails != null and sysDataDetails != ''">#{sysDataDetails},</if>
+        sysdate(),
+     sysdate()
 		)
     </insert>
 	 

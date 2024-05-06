@@ -10,9 +10,9 @@ export function listConfig(query) {
 }
 
 // 查询参数详细
-export function getDataDetail(configId) {
+export function getData(configId) {
   return request({
-    url: '/system/config/dataDetail/' + configId,
+    url: '/system/config/data/' + configId,
     method: 'get'
   })
 }
@@ -25,6 +25,20 @@ export function getConfig(configId) {
   })
 }
 
+/**
+ * 根据参数ID查询数据模版的列名
+ * @param configId
+ * @returns {*}
+ */
+export function getColumns(configId) {
+  return request({
+    url: '/system/config//selectColumns/' + configId,
+    method: 'get'
+  })
+}
+
+
+
 // 查询参数详细
 export function getConfigName(configId) {
   return request({
@@ -32,6 +46,8 @@ export function getConfigName(configId) {
     method: 'get'
   })
 }
+
+
 
 
 

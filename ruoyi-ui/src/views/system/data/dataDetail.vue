@@ -2,10 +2,11 @@
 <template>
 
   <el-row>
-  <el-table class="fixedtableHeight" v-loading="listLoading" ref="multipleTable" :data="showList" :header-cell-style="{background:'#96CDCD'}" stripe tooltip-effect="dark" style="width: 100%;margin-top:1%;">
-    <el-table-column :label="item.propName" :property="item.prop" v-for="item in tableColumnList" :key="item.prop" align="center">
+  <el-table class="fixedtableHeight" v-loading="listLoading" ref="multipleTable" :data="dataList" :header-cell-style="{background:'#96CDCD'}" stripe tooltip-effect="dark" style="width: 100%;margin-top:1%;">
+    <el-table-column v-for="(column, index) in tableColumnList" :key="index" :label="column" align="center">
       <template slot-scope="scope">
-        <span>{{scope.row[scope.column.property]}}</span>
+        <!-- 假设数据源中的属性名与column.property匹配 -->
+        <span>{{ scope.row[column] }}</span>
       </template>
     </el-table-column>
 
@@ -39,16 +40,19 @@
 
 <script>
 
-import { getConfig, delConfig, addConfig, updateConfig, refreshCache,getDataDetail } from "@/api/system/config";
+import {
+  delConfig,
+  updateConfig,
+  getColumns,
+  getData
+} from "@/api/system/config";
 export default {
   data() {
     return {
       detailData: null, // 存储接收到的数据
       listLoading: false,
       showList: [],
-      // 这里为了简便我就没有调用后台接口获取数据，直接写的假数据  你要用的话可以调用后台接口获取tableColumnList，注意数据格式
       tableColumnList: [],
-      // 这里为了简便我就没有调用后台接口获取数据，直接写的假数据
       dataList: [],
       optionalColumnList: [{prop: 'country', propName: '出口国家'},
         {prop: 'address', propName: '零售点'}],
@@ -56,15 +60,31 @@ export default {
     }
   },
   created() {
-    const rawDetailData = this.$route.params.data; // 获取路由传递过来的参数
-    console.log('rawDetailData:', rawDetailData);
-    // 对数据进行处理
-    this.tableColumnList = this.generateTableColumnList(this.transformDataForColumn(rawDetailData));
-    this.dataList = this.generateTableDataList(this.transformDataForData(rawDetailData));
-    console.log('tableColumnList:', this.tableColumnList);
-    console.log('dataList:', this.dataList);
+    const configId = this.$route.params.data; // 获取路由传递过来的参数
+    console.log('configId:', configId);
+    console.log('optionalColumnList:', this.optionalColumnList);
+    this.listColumns(configId);
+    this.listData(configId);
   },
   methods: {
+    async listColumns(configId) {
+      try {
+        const response = await getColumns(configId); // 使用await等待Promise resolve
+        this.tableColumnList = response.data; // 将获取到的tableColumnList赋值给tableColumnList
+        console.log('columns:', this.tableColumnList); // 正确输出获取到的数据
+      } catch (error) {
+        console.error('Error fetching columns:', error); // 处理可能的错误
+      }
+    },
+    async listData(configId) {
+      try {
+        const response = await getData(configId); // 使用await等待Promise resolve
+        this.dataList = response.data; // 将获取到的data赋值给dataList
+        console.log('data:', this.dataList); // 正确输出获取到的数据
+      } catch (error) {
+        console.error('Error fetching data:', error); // 处理可能的错误
+      }
+    },
     transformDataForColumn(data) {
       return data.map(item => {
         const filteredItem = {};

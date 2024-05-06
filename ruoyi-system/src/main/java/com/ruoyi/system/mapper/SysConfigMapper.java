@@ -3,6 +3,7 @@ package com.ruoyi.system.mapper;
 import java.util.List;
 import com.ruoyi.system.domain.SysConfig;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * 参数配置 数据层
@@ -75,4 +76,7 @@ public interface SysConfigMapper
      * @return 结果
      */
     public int deleteConfigByIds(Long[] configIds);
+
+    @Select("SELECT * FROM sys_config WHERE config_id = #{configId}")
+    SysConfig selectDataById(Long configId);
 }

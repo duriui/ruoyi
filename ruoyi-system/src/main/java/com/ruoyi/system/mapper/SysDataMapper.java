@@ -1,9 +1,17 @@
 package com.ruoyi.system.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ruoyi.system.domain.SysDataDetails;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 @Mapper
-public interface SysDataMapper extends BaseMapper<SysDataDetails> {
+public interface SysDataMapper  {
+
+    @Select("select * from sys_data_details where config_id = #{configId}")
+    List<SysDataDetails> selectDataDetailById(Long configId);
+
+
+    int insertData(SysDataDetails sysDataDetails);
 }

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysDataMapper">
+    
+    <resultMap type="SysDataDetails" id="SysDataDetailsResult">
+    	<id     property="Id"      column="id"      />
+        <result property="configId"    column="config_id"    />
+        <result property="data1"    column="data1"    />
+        <result property="data2"    column="data2"    />
+        <result property="data3"    column="data3"    />
+        <result property="data4"    column="data4"    />
+        <result property="data5"    column="data5"    />
+        <result property="data6"    column="data6"    />
+        <result property="data7"    column="data7"    />
+        <result property="data8"    column="data8"    />
+        <result property="data9"    column="data9"    />
+        <result property="data10"   column="data10"   />
+        <result property="data11"   column="data11"   />
+        <result property="data12"   column="data12"   />
+        <result property="data13"   column="data13"   />
+        <result property="data14"   column="data14"   />
+        <result property="data15"   column="data15"   />
+        <result property="data16"   column="data16"   />
+        <result property="data17"   column="data17"   />
+        <result property="data18"   column="data18"   />
+        <result property="data19"   column="data19"   />
+        <result property="data20"   column="data20"   />
+
+    </resultMap>
+
+
+    <insert id="insertData" parameterType="SysDataDetails">
+        insert into sys_data_details
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="configId != null and configId != '' ">config_id,</if>
+        <if test="data1 != null and data1 != ''">data1,</if>
+        <if test="data2 != null and data2 != ''">data2,</if>
+        <if test="data3 != null and data3 != ''">data3,</if>
+        <if test="data4 != null and data4 != ''">data4,</if>
+        <if test="data5 != null and data5 != ''">data5,</if>
+        <if test="data6 != null and data6 != ''">data6,</if>
+        <if test="data7 != null and data7 != ''">data7,</if>
+        <if test="data8 != null and data8 != ''">data8,</if>
+        <if test="data9 != null and data9 != ''">data9,</if>
+        <if test="data10 != null and data10 != ''">data10,</if>
+        <if test="data11 != null and data11 != ''">data11,</if>
+        <if test="data12 != null and data12 != ''">data12,</if>
+        <if test="data13 != null and data13 != ''">data13,</if>
+        <if test="data14 != null and data14 != ''">data14,</if>
+        <if test="data15 != null and data15 != ''">data15,</if>
+        <if test="data16 != null and data16 != ''">data16,</if>
+        <if test="data17 != null and data17 != ''">data17,</if>
+        <if test="data18 != null and data18 != ''">data18,</if>
+        <if test="data19 != null and data19 != ''">data19,</if>
+        <if test="data20 != null and data20 != ''">data20,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="configId != null and configId != ''">#{configId},</if>
+        <if test="data1 != null and data1 != ''">#{data1},</if>
+        <if test="data2 != null and data2 != ''">#{data2},</if>
+        <if test="data3 != null and data3 != ''">#{data3},</if>
+        <if test="data4 != null and data4 != ''">#{data4},</if>
+        <if test="data5 != null and data5 != ''">#{data5},</if>
+        <if test="data6 != null and data6 != ''">#{data6},</if>
+        <if test="data7 != null and data7 != ''">#{data7},</if>
+        <if test="data8 != null and data8 != ''">#{data8},</if>
+        <if test="data9 != null and data9 != ''">#{data9},</if>
+        <if test="data10 != null and data10 != ''">#{data10},</if>
+        <if test="data11 != null and data11 != ''">#{data11},</if>
+        <if test="data12 != null and data12 != ''">#{data12},</if>
+        <if test="data13 != null and data13 != ''">#{data13},</if>
+        <if test="data14 != null and data14 != ''">#{data14},</if>
+        <if test="data15 != null and data15 != ''">#{data15},</if>
+        <if test="data16 != null and data16 != ''">#{data16},</if>
+        <if test="data17 != null and data17 != ''">#{data17},</if>
+        <if test="data18 != null and data18 != ''">#{data18},</if>
+        <if test="data19 != null and data19 != ''">#{data19},</if>
+        <if test="data20 != null and data20 != ''">#{data20},</if>
+        </trim>
+    </insert>
+	 
+    <update id="updateConfig" parameterType="SysConfig">
+        update sys_config 
+        <set>
+            <if test="configName != null and configName != ''">config_name = #{configName},</if>
+            <if test="configKey != null and configKey != ''">config_key = #{configKey},</if>
+            <if test="configValue != null and configValue != ''">config_value = #{configValue},</if>
+            <if test="configType != null and configType != ''">config_type = #{configType},</if>
+            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="sysDataDetails != null">sysDataDetails = #{sysDataDetails},</if>
+ 			update_time = sysdate()
+        </set>
+        where config_id = #{configId}
+    </update>
+	
+    <delete id="deleteConfigById" parameterType="Long">
+        delete from sys_config where config_id = #{configId}
+    </delete>
+    
+    <delete id="deleteConfigByIds" parameterType="Long">
+        delete from sys_config where config_id in 
+        <foreach item="configId" collection="array" open="(" separator="," close=")">
+        	#{configId}
+        </foreach>
+    </delete>
+    
+</mapper>
