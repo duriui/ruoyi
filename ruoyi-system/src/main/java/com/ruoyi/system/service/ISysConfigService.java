@@ -1,5 +1,6 @@
 package com.ruoyi.system.service;
 
+import java.util.HashMap;
 import java.util.List;
 import com.ruoyi.system.domain.SysConfig;
 import com.ruoyi.system.domain.SysDataDemo;
@@ -95,9 +96,13 @@ public interface ISysConfigService
      * @param configId 参数信息
      * @return 结果
      */
-    List<SysDataDetails> selectDataDetailById(Long configId);
+    HashMap<Integer, HashMap<String, String>> selectDataDetailById(Long configId);
 
     int insertData(SysConfig config);
 
     int insertSysData(SysDataDemo sysData);
+
+    HashMap<String, String> selectDataById(Long configId);
+
+    int insertDataDetail(SysDataDetails sysDataDetails);
 }

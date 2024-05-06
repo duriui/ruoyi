@@ -2,6 +2,7 @@ package com.ruoyi.web.controller.system;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
@@ -83,11 +84,23 @@ public class SysConfigController extends BaseController
     /**
      * 根据参数id查询数据详情
      */
-    @GetMapping(value = "/dataDetail/{configId}")
-    public AjaxResult getDataDetail(@PathVariable Long configId)
+    @GetMapping(value = "/data/{configId}")
+    public AjaxResult getData(@PathVariable Long configId)
     {
         return success(configService.selectDataDetailById(configId));
     }
+
+//    /**
+//     * 根据参数id查询数据详情
+//     */
+//    @GetMapping(value = "/dataDetail/{configId}")
+//    public AjaxResult getDataDetail(@PathVariable Long configId)
+//    {
+//        List<SysDataDetails> datas = configService.selectDataDetailById(configId);
+//        HashMap<String, String> columns = configService.selectDataById(configId);
+//
+//        return success(configService.selectDataDetailById(configId));
+//    }
 
     /**
      * 新增参数配置
@@ -120,7 +133,7 @@ public class SysConfigController extends BaseController
             return error("无该用户");
         }
         SysDataDetails sysDataDetails = new SysDataDetails();
-        sysDataDetails.setConfig_id(configId);
+        sysDataDetails.setConfigId(configId);
         return success(sysDataDetails);
     }
 
@@ -132,19 +145,10 @@ public class SysConfigController extends BaseController
     @PostMapping("addOne")
     public AjaxResult addNewData(@Validated @RequestBody SysDataDetails sysDataDetails)
     {
-        SysConfig config = configService.selectConfigById(sysDataDetails.getConfig_id());
-        config.setUpdateBy(getUsername());
-
-        List<SysDataDetails> sysDataDetailsOld = JSON.parseArray(config.getSysDataDetails(), SysDataDetails.class);
-        if(sysDataDetailsOld == null || sysDataDetailsOld.size() == 0){
-            ArrayList<SysDataDetails> sysDataDetailsNew = new ArrayList<SysDataDetails>();
-            sysDataDetailsNew.add(sysDataDetails);
-            config.setSysDataDetails(JSON.toJSONString(sysDataDetailsNew));
-        }else{
-            sysDataDetailsOld.add(sysDataDetails);
-            config.setSysDataDetails(JSON.toJSONString(sysDataDetailsOld));
-        }
-        return toAjax(configService.updateConfig(config));
+       if( null == sysDataDetails){
+           return error("数据不能为空");
+       }
+        return toAjax(configService.insertDataDetail(sysDataDetails));
     }
 
     /**
@@ -153,13 +157,10 @@ public class SysConfigController extends BaseController
     @PreAuthorize("@ss.hasPermi('system:config:add')")
     @Log(title = "参数管理", businessType = BusinessType.INSERT)
     @PostMapping("add")
-    public AjaxResult addData(@Validated @RequestBody SysDataDemo sysData)
+    public AjaxResult addData(@Validated @RequestBody SysConfig sysConfig)
     {
-        SysConfig sysConfig = new SysConfig();
         sysConfig.setUpdateBy(getUsername());
         sysConfig.setCreateBy(getUsername());
-
-        sysConfig.setConfigName(sysData.getDataName());
         return toAjax(configService.insertConfig(sysConfig));
     }
 
@@ -179,6 +180,17 @@ public class SysConfigController extends BaseController
         sysData.setCreateTime(LocalDateTime.now().toString());
         sysData.setUpdateTime(LocalDateTime.now().toString());
         return toAjax(configService.insertSysData(sysData));
+    }
+
+    /**
+     * 查询数据模板的列名
+     */
+    @Log(title = "参数管理", businessType = BusinessType.INSERT)
+    @GetMapping("/selectColumns/{configId}")
+    public AjaxResult getsColumns(@PathVariable Long configId)
+    {
+        HashMap<String, String> columns = configService.selectDataById(configId);
+        return success(columns);
     }
 
     /**
