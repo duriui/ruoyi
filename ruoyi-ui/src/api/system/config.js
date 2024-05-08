@@ -9,11 +9,27 @@ export function listConfig(query) {
   })
 }
 
-// 查询参数详细
+// 查询数据详细
 export function getData(configId) {
   return request({
     url: '/system/config/data/' + configId,
     method: 'get'
+  })
+}
+
+// 根据ids获取数据
+export function getSingleData(id) {
+  return request({
+    url: '/system/config/singleData/' + id,
+    method: 'get'
+  })
+}
+
+export function updateSingleData(data) {
+  return request({
+    url: '/system/config/singleData',
+    method: 'put',
+    data: data
   })
 }
 
@@ -32,7 +48,7 @@ export function getConfig(configId) {
  */
 export function getColumns(configId) {
   return request({
-    url: '/system/config//selectColumns/' + configId,
+    url: '/system/config/columns/' + configId,
     method: 'get'
   })
 }
@@ -86,10 +102,18 @@ export function updateConfig(data) {
   })
 }
 
-// 删除参数配置
+// 删除一种数据模板
 export function delConfig(configId) {
   return request({
     url: '/system/config/' + configId,
+    method: 'delete'
+  })
+}
+
+// 删除参数配置
+export function delData(configId) {
+  return request({
+    url: '/system/config/data/' + configId,
     method: 'delete'
   })
 }

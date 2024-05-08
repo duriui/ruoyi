@@ -77,6 +77,6 @@ public interface SysConfigMapper
      */
     public int deleteConfigByIds(Long[] configIds);
 
-    @Select("SELECT * FROM sys_config WHERE config_id = #{configId}")
+    @Select("SELECT config_id as configId,config_name as configName,column1,column2,column3,column4,column5,column6,column7,column8,column9,column10,column11,column12,column13,column14,column15,column16,column17,column18,column19,column20,create_by as createBy,create_time as createTime,update_by as updateBy,update_time as updateTime FROM sys_config WHERE config_id = #{configId}")
     SysConfig selectDataById(Long configId);
 }

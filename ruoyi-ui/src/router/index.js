@@ -97,7 +97,8 @@ export const constantRoutes = [
       {
         path: '',
         component: () => import('@/views/system/data/dataDetail'),
-        name: 'dataDetail'
+        name: 'dataDetail',
+        meta: { title: '数据详情' }
       }
     ]
   },

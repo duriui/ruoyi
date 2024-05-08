@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
-import com.alibaba.fastjson.JSON;
 import com.ruoyi.system.domain.SysDataDemo;
 import com.ruoyi.system.domain.SysDataDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +20,6 @@ import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.system.domain.SysConfig;
 import com.ruoyi.system.service.ISysConfigService;
-
-//TODO: 1、新增一种数据模板，需要输入数据名称、所需要的列名
-//TODO: 2、修改一种数据模板，需要输入数据名称、列名
-//TODO: 3、新增一条数据，根据列名弹出一个输入界面，输入数据，保存数据
-//TODO: 4、修改一条数据，根据列名弹出一个输入界面，输入数据，保存数据
-//TODO: 5、删除一条数据，根据列名弹出一个确认界面，确认是否删除，确认后删除数据
 
 /**
  * 参数配置 信息操作处理
@@ -76,31 +69,21 @@ public class SysConfigController extends BaseController
      * 根据参数键名查询参数值
      */
     @GetMapping(value = "/configKey/{configKey}")
+    @PreAuthorize("@ss.hasPermi('system:config:list')")
     public AjaxResult getConfigKey(@PathVariable String configKey)
     {
         return success(configService.selectConfigByKey(configKey));
     }
 
     /**
-     * 根据参数id查询数据详情
+     * 根据configId查询数据详情
      */
     @GetMapping(value = "/data/{configId}")
+    @PreAuthorize("@ss.hasPermi('system:config:list')")
     public AjaxResult getData(@PathVariable Long configId)
     {
         return success(configService.selectDataDetailById(configId));
     }
-
-//    /**
-//     * 根据参数id查询数据详情
-//     */
-//    @GetMapping(value = "/dataDetail/{configId}")
-//    public AjaxResult getDataDetail(@PathVariable Long configId)
-//    {
-//        List<SysDataDetails> datas = configService.selectDataDetailById(configId);
-//        HashMap<String, String> columns = configService.selectDataById(configId);
-//
-//        return success(configService.selectDataDetailById(configId));
-//    }
 
     /**
      * 新增参数配置
@@ -123,6 +106,7 @@ public class SysConfigController extends BaseController
      * 根据id返回用户
      */
     @GetMapping("/name/{configId}")
+    @PreAuthorize("@ss.hasPermi('system:config:list')")
     public AjaxResult getName(@PathVariable Long configId)
     {
         if(configId ==null){
@@ -148,8 +132,29 @@ public class SysConfigController extends BaseController
        if( null == sysDataDetails){
            return error("数据不能为空");
        }
-        return toAjax(configService.insertDataDetail(sysDataDetails));
+       return toAjax(configService.insertDataDetail(sysDataDetails));
     }
+
+    /**
+     * 根据ids查看数据
+     */
+    @PreAuthorize("@ss.hasPermi('system:config:query')")
+    @GetMapping("/singleData/{id}")
+    public AjaxResult listData(@PathVariable Long id)
+    {
+        SysDataDetails sysDataDetails = configService.listDataById(id);
+        return success(sysDataDetails);
+    }
+    @PreAuthorize("@ss.hasPermi('system:config:edit')")
+    @PutMapping("/singleData")
+    public AjaxResult updateData(@Validated @RequestBody SysDataDetails sysDataDetails)
+    {
+        if(null == sysDataDetails){
+            return error("数据不能为空");
+        }
+        return toAjax(configService.updateDataDetail(sysDataDetails));
+    }
+
 
     /**
      * 新增一种数据
@@ -186,7 +191,7 @@ public class SysConfigController extends BaseController
      * 查询数据模板的列名
      */
     @Log(title = "参数管理", businessType = BusinessType.INSERT)
-    @GetMapping("/selectColumns/{configId}")
+    @GetMapping("/columns/{configId}")
     public AjaxResult getsColumns(@PathVariable Long configId)
     {
         HashMap<String, String> columns = configService.selectDataById(configId);
@@ -201,16 +206,12 @@ public class SysConfigController extends BaseController
     @PutMapping
     public AjaxResult edit(@Validated @RequestBody SysConfig config)
     {
-//        if (!configService.checkConfigKeyUnique(config))
-//        {
-//            return error("修改参数'" + config.getConfigName() + "'失败，参数键名已存在");
-//        }
         config.setUpdateBy(getUsername());
         return toAjax(configService.updateConfig(config));
     }
 
     /**
-     * 删除参数配置
+     * 删除一种数据模板配置
      */
     @PreAuthorize("@ss.hasPermi('system:config:remove')")
     @Log(title = "参数管理", businessType = BusinessType.DELETE)
@@ -218,6 +219,19 @@ public class SysConfigController extends BaseController
     public AjaxResult remove(@PathVariable Long[] configIds)
     {
         configService.deleteConfigByIds(configIds);
+        return success();
+    }
+
+
+    /**
+     * 删除一条数据
+     */
+    @PreAuthorize("@ss.hasPermi('system:config:remove')")
+    @Log(title = "参数管理", businessType = BusinessType.DELETE)
+    @DeleteMapping("/data/{ids}")
+    public AjaxResult removeData(@PathVariable Long[] ids)
+    {
+        configService.deleteDataByIds(ids);
         return success();
     }
 

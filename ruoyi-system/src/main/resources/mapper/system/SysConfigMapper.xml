@@ -167,6 +167,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
             <if test="remark != null">remark = #{remark},</if>
             <if test="sysDataDetails != null">sysDataDetails = #{sysDataDetails},</if>
+            <if test="column1 != null and column1 != ''">column1 = #{column1},</if>
+            <if test="column2 != null and column2 != ''">column2 = #{column2},</if>
+            <if test="column3 != null and column3 != ''">column3 = #{column3},</if>
+            <if test="column4 != null and column4 != ''">column4 = #{column4},</if>
+            <if test="column5 != null and column5 != ''">column5 = #{column5},</if>
+            <if test="column6 != null and column6 != ''">column6 = #{column6},</if>
+            <if test="column7 != null and column7 != ''">column7 = #{column7},</if>
+            <if test="column8 != null and column8 != ''">column8 = #{column8},</if>
+            <if test="column9 != null and column9 != ''">column9 = #{column9},</if>
+            <if test="column10 != null and column10 != ''">column10 = #{column10},</if>
+            <if test="column11 != null and column11 != ''">column11 = #{column11},</if>
+            <if test="column12 != null and column12 != ''">column12 = #{column12},</if>
+            <if test="column13 != null and column13 != ''">column13 = #{column13},</if>
+            <if test="column14 != null and column14 != ''">column14 = #{column14},</if>
+            <if test="column15 != null and column15 != ''">column15 = #{column15},</if>
+            <if test="column16 != null and column16 != ''">column16 = #{column16},</if>
+            <if test="column17 != null and column17 != ''">column17 = #{column17},</if>
+            <if test="column18 != null and column18 != ''">column18 = #{column18},</if>
+            <if test="column19 != null and column19 != ''">column19 = #{column19},</if>
+            <if test="column20 != null and column20 != ''">column20 = #{column20},</if>
  			update_time = sysdate()
         </set>
         where config_id = #{configId}

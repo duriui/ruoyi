@@ -324,6 +324,185 @@
             style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
           />
         </el-form-item>
+        <el-form-item label="列名" prop="column1">
+          <el-input
+            v-model="form.column1"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column2">
+          <el-input
+            v-model="form.column2"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column3">
+          <el-input
+            v-model="form.column3"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column4">
+          <el-input
+            v-model="form.column4"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column5">
+          <el-input
+            v-model="form.column5"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column6">
+          <el-input
+            v-model="form.column6"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column7">
+          <el-input
+            v-model="form.column7"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column8">
+          <el-input
+            v-model="form.column8"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column9">
+          <el-input
+            v-model="form.column9"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column10">
+          <el-input
+            v-model="form.column10"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column11">
+          <el-input
+            v-model="form.column11"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column12">
+          <el-input
+            v-model="form.column12"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column13">
+          <el-input
+            v-model="form.column13"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column14">
+          <el-input
+            v-model="form.column14"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column15">
+          <el-input
+            v-model="form.column15"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column16">
+          <el-input
+            v-model="form.column16"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column17">
+          <el-input
+            v-model="form.column17"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column18">
+          <el-input
+            v-model="form.column18"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column19">
+          <el-input
+            v-model="form.column19"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
+
+        <el-form-item label="列名" prop="column20">
+          <el-input
+            v-model="form.column20"
+            type="textarea"
+            placeholder="请输入内容"
+            style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+          />
+        </el-form-item>
       </el-form>
 
       <div slot="footer" class="dialog-footer">
@@ -580,6 +759,9 @@ export default {
       title: "",
       // 是否显示弹出层
       open: false,
+      open1: false,
+      open2: false,
+
       // 日期范围
       dateRange: [],
       // 查询参数

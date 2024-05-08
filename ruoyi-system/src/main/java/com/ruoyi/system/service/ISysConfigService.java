@@ -63,9 +63,9 @@ public interface ISysConfigService
     /**
      * 批量删除参数信息
      * 
-     * @param configIds 需要删除的参数ID
+     * @param ids 需要删除的参数ID
      */
-    public void deleteConfigByIds(Long[] configIds);
+    public void deleteConfigByIds(Long[] ids);
 
     /**
      * 加载参数缓存数据
@@ -96,7 +96,7 @@ public interface ISysConfigService
      * @param configId 参数信息
      * @return 结果
      */
-    HashMap<Integer, HashMap<String, String>> selectDataDetailById(Long configId);
+    List<SysDataDetails> selectDataDetailById(Long configId);
 
     int insertData(SysConfig config);
 
@@ -105,4 +105,10 @@ public interface ISysConfigService
     HashMap<String, String> selectDataById(Long configId);
 
     int insertDataDetail(SysDataDetails sysDataDetails);
+
+    void deleteDataByIds(Long[] configIds);
+
+    SysDataDetails listDataById(Long id);
+
+    int updateDataDetail(SysDataDetails sysDataDetails);
 }
