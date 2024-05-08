@@ -65,9 +65,7 @@ public class SysConfigServiceImpl implements ISysConfigService
     @DataSource(DataSourceType.MASTER)
     public SysConfig selectConfigById(Long configId)
     {
-        SysConfig config = new SysConfig();
-        config.setConfigId(configId);
-        return configMapper.selectConfig(config);
+        return configMapper.selectDataById(configId);
     }
 
     /**
@@ -237,7 +235,7 @@ public class SysConfigServiceImpl implements ISysConfigService
      * @return 结果
      */
     @Override
-    public  HashMap<Integer, HashMap<String, String>> selectDataDetailById(Long configId) {
+    public  List<SysDataDetails> selectDataDetailById(Long configId) {
         List<SysDataDetails> sysDataDetails = sysDataMapper.selectDataDetailById(configId);
         HashMap<Integer, HashMap<String, String>> resMap = new HashMap<>();
         int count = 0;
@@ -305,8 +303,8 @@ public class SysConfigServiceImpl implements ISysConfigService
             }
             resMap.put(count++,data);
         }
-
-        return resMap;
+//        return resMap;
+        return sysDataDetails;
     }
 
     @Override
@@ -392,6 +390,24 @@ public class SysConfigServiceImpl implements ISysConfigService
     @Override
     public int insertDataDetail(SysDataDetails sysDataDetails) {
         return sysDataMapper.insertData(sysDataDetails);
+    }
+
+    @Override
+    public void deleteDataByIds(Long[] ids) {
+        for (Long id : ids) {
+            sysDataMapper.deleteDataById(id);
+        }
+    }
+
+    @Override
+    public SysDataDetails listDataById(Long id) {
+
+        return sysDataMapper.selectDataById(id);
+    }
+
+    @Override
+    public int updateDataDetail(SysDataDetails sysDataDetails) {
+        return sysDataMapper.updateData(sysDataDetails);
     }
 
 

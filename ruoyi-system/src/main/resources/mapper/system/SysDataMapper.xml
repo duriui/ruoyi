@@ -82,19 +82,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </trim>
     </insert>
 	 
-    <update id="updateConfig" parameterType="SysConfig">
-        update sys_config 
+    <update id="updateData" parameterType="SysDataDetails">
+        update sys_data_details
         <set>
-            <if test="configName != null and configName != ''">config_name = #{configName},</if>
-            <if test="configKey != null and configKey != ''">config_key = #{configKey},</if>
-            <if test="configValue != null and configValue != ''">config_value = #{configValue},</if>
-            <if test="configType != null and configType != ''">config_type = #{configType},</if>
-            <if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
-            <if test="remark != null">remark = #{remark},</if>
-            <if test="sysDataDetails != null">sysDataDetails = #{sysDataDetails},</if>
- 			update_time = sysdate()
+            <if test="data1 != null and data1 != ''">data1 = #{data1},</if>
+            <if test="data2 != null and data2 != ''">data2 = #{data2},</if>
+            <if test="data3 != null and data3 != ''">data3 = #{data3},</if>
+            <if test="data4 != null and data4 != ''">data4 = #{data4},</if>
+            <if test="data5 != null and data5 != ''">data5 = #{data5},</if>
+            <if test="data6 != null and data6 != ''">data6 = #{data6},</if>
+            <if test="data7 != null and data7 != ''">data7 = #{data7},</if>
+            <if test="data8 != null and data8 != ''">data8 = #{data8},</if>
+            <if test="data9 != null and data9 != ''">data9 = #{data9},</if>
+            <if test="data10 != null and data10 != ''">data10 = #{data10},</if>
+            <if test="data11 != null and data11 != ''">data11 = #{data11},</if>
+            <if test="data12 != null and data12 != ''">data12 = #{data12},</if>
+            <if test="data13 != null and data13 != ''">data13 = #{data13},</if>
+            <if test="data14 != null and data14 != ''">data14 = #{data14},</if>
+            <if test="data15 != null and data15 != ''">data15 = #{data15},</if>
+            <if test="data16 != null and data16 != ''">data16 = #{data16},</if>
+            <if test="data17 != null and data17 != ''">data17 = #{data17},</if>
+            <if test="data18 != null and data18 != ''">data18 = #{data18},</if>
+            <if test="data19 != null and data19 != ''">data19 = #{data19},</if>
+            <if test="data20 != null and data20 != ''">data20 = #{data20},</if>
         </set>
-        where config_id = #{configId}
+        where id = #{id}
     </update>
 	
     <delete id="deleteConfigById" parameterType="Long">
