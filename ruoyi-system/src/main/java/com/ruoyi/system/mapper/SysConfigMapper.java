@@ -10,7 +10,6 @@ import org.apache.ibatis.annotations.Select;
  *
  * @author ruoyi
  */
-@Mapper
 public interface SysConfigMapper
 {
     /**

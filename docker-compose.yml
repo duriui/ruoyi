@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  ruoyi-admin:
+    image: ruoyi-admin:latest
+    ports:
+      - "8081:8081"
+    networks:
+      - my-network
+
+  ruoyi-common:
+    image: ruoyi-common:latest
+    ports:
+      - "8082:8082"
+    networks:
+      - my-network
+
+  ruoyi-framework:
+    image: ruoyi-framework:latest
+    ports:
+      - "8083:8083"
+    networks:
+      - my-network
+
+  ruoyi-generator:
+    image: ruoyi-generator:latest
+    ports:
+      - "8084:8084"
+    networks:
+      - my-network
+
+  ruoyi-quartz:
+    image: ruoyi-quartz:latest
+    ports:
+      - "8085:8085"
+    networks:
+      - my-network
+
+  ruoyi-system:
+    image: ruoyi-system:latest
+    ports:
+      - "8086:8086"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge

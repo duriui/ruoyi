@@ -1,11 +1,8 @@
 package com.ruoyi.system.service.impl;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.*;
 import javax.annotation.PostConstruct;
 
-import com.alibaba.fastjson.JSON;
 import com.ruoyi.system.domain.SysDataDemo;
 import com.ruoyi.system.domain.SysDataDetails;
 import com.ruoyi.system.mapper.SysDataDemoMapper;
@@ -22,7 +19,6 @@ import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.system.domain.SysConfig;
 import com.ruoyi.system.mapper.SysConfigMapper;
 import com.ruoyi.system.service.ISysConfigService;
-import org.apache.commons.beanutils.BeanUtils;
 
 import static com.ruoyi.common.utils.StringUtils.isNotEmpty;
 

@@ -157,7 +157,7 @@ public class SysConfigController extends BaseController
 
 
     /**
-     * 新增一种数据
+     * 新增一种数据模板
      */
     @PreAuthorize("@ss.hasPermi('system:config:add')")
     @Log(title = "参数管理", businessType = BusinessType.INSERT)
