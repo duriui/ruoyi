@@ -112,14 +112,14 @@
             icon="el-icon-plus"
             @click="handleAddData(scope.row)"
             v-hasPermi="['system:config:add']"
-          >新增一条数据</el-button>
+          >新增数据</el-button>
           <el-button
             size="mini"
             type="text"
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['system:config:edit']"
-          >修改名称</el-button>
+          >修改数据模板</el-button>
           <el-button
             size="mini"
             type="text"
